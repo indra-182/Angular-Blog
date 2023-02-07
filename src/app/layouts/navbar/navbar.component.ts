@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from 'src/app/services/categories.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  constructor() {}
+  categoryArray: Array<object>;
 
-  ngOnInit(): void {}
+  constructor(private categoryService: CategoriesService) {}
+
+  ngOnInit(): void {
+    this.categoryService.loadData().subscribe((val) => {
+      console.log(val);
+      this.categoryArray = val;
+    });
+  }
 }
