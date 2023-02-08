@@ -9,8 +9,8 @@ import { TermsAndConditiosComponent } from './pages/terms-and-conditios/terms-an
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'category', component: SingleCategoryComponent },
-  { path: 'post', component: SinglePostComponent },
+  { path: 'category/:categoryName/:id', component: SingleCategoryComponent },
+  { path: 'post/:id', component: SinglePostComponent },
   { path: 'about', component: AboutUsComponent },
   { path: 'terms-conditions', component: TermsAndConditiosComponent },
   { path: 'contact', component: ContactUsComponent },

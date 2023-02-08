@@ -13,7 +13,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryService.loadData().subscribe((val) => {
-      console.log(val);
       this.categoryArray = val;
     });
   }

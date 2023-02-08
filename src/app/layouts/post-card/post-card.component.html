@@ -1,26 +1,32 @@
-<div class="card shadow-effect">
+<div
+  class="card shadow-effect"
+  *ngIf="postData"
+  [routerLink]="['/post', postData.id]"
+>
   <img
-    src="https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    src="{{ postData.data.postImgPath }}"
     alt="post-image"
     class="card-img-top"
   />
   <div class="card-body">
-    <small class="bg-light text-danger text-center">Design</small>
-    <small class="bg-light text-success text-center ml-3">Featured</small>
-    <small class="bg-light text-info text-center ml-3">Views 100,182</small>
+    <small class="bg-light text-danger text-center">{{
+      postData.data.category.categoryName
+    }}</small>
+    <small
+      class="bg-light text-success text-center ml-3"
+      *ngIf="postData.data.isFeatured"
+      >Featured</small
+    >
+    <small class="bg-light text-info text-center ml-3">{{
+      postData.data.views
+    }}</small>
 
-    <h5 class="mt-1">HOW TO START A BLOG IN 2022</h5>
+    <h5 class="mt-1">{{ postData.data.title }}</h5>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a nibh
-      scelerisque, consequat lectus ut, tincidunt sem. Vestibulum laoreet nunc
-      id enim laoreet volutpat. Donec in nulla condimentum, imperdiet ligula a,
-      placerat massa. Fusce commodo est sit amet nunc placerat, vitae efficitur
-      magna interdum. Vivamus et congue orci. Pellentesque semper purus ut mi
-      sollicitudin, sed iaculis ante imperdiet. Ut varius sit amet sem quis
-      pellentesque. Donec placerat sit amet massa at elementum. Etiam quis
-      tellus id augue vehicula pretium et id dolor. Nam rhoncus in tellus eu
-      scelerisque. Phasellus non diam ac lectus lacinia auctor id non sapien.
+      {{ postData.data.excerpt }}
     </p>
-    <small class="bg-light text-warning text-center ml-3">LAST UPDATED - JAN 03,2023</small>
+    <small class="bg-light text-warning text-center ml-3">{{
+      postData.data.createdAt.toMillis() | date
+    }}</small>
   </div>
 </div>
